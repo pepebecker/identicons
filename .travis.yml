@@ -1,10 +1,12 @@
 language: node_js
 node_js: node
-script: npm run build
-before_deploy: rm -rf src
+script:
+ - npm run build
+ - cp CNAME public/CNAME
 deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
+  local_dir: public
   on:
     branch: master
